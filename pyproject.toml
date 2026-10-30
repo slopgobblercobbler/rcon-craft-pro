@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rcon-craft-pro"
+version = "1.0.0"
+description = "Advanced, asynchronous Python/CLI and interactive TUI tool for Minecraft Server RCON administration"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Antigravity Team", email = "antigravity@example.com" }
+]
+keywords = ["minecraft", "rcon", "asyncio", "cli", "tui", "administration", "multi-packet"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "click>=8.0.0",
+    "prompt_toolkit>=3.0.0",
+    "rich>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.20.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+rcon-craft = "rcon_craft.cli:main"
+rcon-craft-pro = "rcon_craft.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["rcon_craft*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --cov=rcon_craft --cov-report=term-missing"
